@@ -1,5 +1,5 @@
 let assert = require('assert');
-let ParkingLot = require('../main/parkingLot')
+let ParkingLot = require('../main/parkingLotSystem')
 
 
 describe(`Parking Lot problem Test`, () => {
@@ -41,9 +41,9 @@ describe(`Parking Lot problem Test`, () => {
         try {
             let car1 = new Object();
             parkingLot.park(car1);
-            assert.ok(parkingLot.unPark());
-        }catch(err){
-            assert.equal(err.message,"Car Not Found..")
+            parkingLot.unPark();
+        } catch (err) {
+            assert.equal(err.message, "Car Not Found..")
         }
     })
 
@@ -53,6 +53,26 @@ describe(`Parking Lot problem Test`, () => {
             assert.ok(parkingLot.unPark(car1));
         }catch(err){
             assert.equal(err.message,"Car Not Found..")
+        }
+    })
+
+    it(`given car for park when car not fund should throwing an exception`, () => {
+        try {
+            let car1 = new Object();
+            parkingLot.unPark(car1);
+        }catch(err){
+            assert.equal(err.message,"Car Not Found..")
+        }
+    })
+
+    it(`given cars for park when car parking is full should throwing an exception`, () => {
+        try {
+            let car = [ new Object(),new Object(),new Object()];
+            car.map(car => {
+               parkingLot.park(car);
+            })
+        }catch(err){
+            assert.equal(err.message,"Parking lot is full....")
         }
     })
 })
