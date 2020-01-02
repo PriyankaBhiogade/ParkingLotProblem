@@ -65,7 +65,7 @@ describe(`Parking Lot problem Test`, () => {
         }
     })
 
-    it(`given cars for park when car parking is full should throwing an exception`, () => {
+    it(`when car parking is full notify Parking lot Owner and throwing an exception`, () => {
         try {
             let car = [ new Object(),new Object(),new Object()];
             car.map(car => {
@@ -75,4 +75,16 @@ describe(`Parking Lot problem Test`, () => {
             assert.equal(err.message,"Parking lot is full....")
         }
     })
+
+    it(`when car parking is full notify Airport Security and throwing an exception`, () => {
+        try {
+            let car = [ new Object(),new Object(),new Object()];
+            car.map(car => {
+                parkingLot.park(car);
+            })
+        }catch(err){
+            assert.equal(err.message,"Parking lot is full....")
+        }
+    })
+
 })
