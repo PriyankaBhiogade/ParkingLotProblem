@@ -36,4 +36,23 @@ describe(`Parking Lot problem Test`, () => {
             assert.equal(err.message,"Car Not Found..")
         }
     })
+
+    it(`given car for park when want to unPark that car but car not fund should throwing an exception`, () => {
+        try {
+            let car1 = new Object();
+            parkingLot.park(car1);
+            assert.ok(parkingLot.unPark());
+        }catch(err){
+            assert.equal(err.message,"Car Not Found..")
+        }
+    })
+
+    it(`given car for park when car not fund should throwing an exception`, () => {
+        try {
+            let car1 = new Object();
+            assert.ok(parkingLot.unPark(car1));
+        }catch(err){
+            assert.equal(err.message,"Car Not Found..")
+        }
+    })
 })
